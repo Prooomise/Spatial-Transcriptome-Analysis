@@ -61,6 +61,7 @@ Run `rlang::last_trace()` to see where the error occurred.
 解决策略1：
 1. 首先明确`Default search for "data" layer in "Spatial" assay yielded no results; utilizing "counts" layer instead`并不是错误源头，包在发现没有data layer之后已经自动使用counts layer替代。
 2. 出错原因在于没有理解Seurat对象的结构，生搬scRNA-seq的结果。在ST中，assay中的层叫`nFeature_Spatial`、`nCount_Spatial`，而不是`nFeature_RNA`、`nCount_RNA`，因此直接修改画图时指定的对象名称即可，错误解决。
+![](assets/fig-2024-12-28-18-41.png)
 
 出现错误2：`pattern = "^mt-"`匹配不到线粒体基因
 解决策略2：检查基因名，发现线粒体基因的MT大写，修改为`pattern = "^MT-"`，错误解决。
