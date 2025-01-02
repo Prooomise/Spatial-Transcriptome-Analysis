@@ -1,7 +1,4 @@
 <h1>10×Visium ST Analysis Tutorial</h1>
-Author: Nuo Chen<br>
-Date: 2024/12/28<br>
-Affiliation: College of Life Science, Tsinghua University<br>
 
 
 <h3>10× Genomics Visium ST Sequencing Downstream Analysis Could Include: </h3>
@@ -13,7 +10,9 @@ Affiliation: College of Life Science, Tsinghua University<br>
     6. Working with multiple slices处理多个切片; etc. <br>
 <br>
 
-以[Zhi et al., 2024](https://onlinelibrary.wiley.com/doi/10.1002/advs.202306515)的数据为例，开展空间转录组分析：
+以[Zhi et al., 2024](https://onlinelibrary.wiley.com/doi/10.1002/advs.202306515
+        
+        )的数据为例，开展空间转录组分析：
 
 <h4>1. 数据输入，构建Seurat对象</h4>
 
