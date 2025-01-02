@@ -120,3 +120,4 @@ SpatialFeaturePlot(OSCC_merge, features = c("SPP1", "SLURP2"), image.alpha = 0.5
 ```
 ![](./UMAP_allcell.png)
 ![](./UMAP_slice.png)
+![](./marker_gene.png)
