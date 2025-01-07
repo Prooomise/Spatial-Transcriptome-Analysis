@@ -76,10 +76,10 @@ p1 <- SCTransform(p1, assay = "Spatial", verbose = FALSE)
 p1 <- FindSpatiallyVariableFeatures(p1, assay = "SCT", features = VariableFeatures(p1)[1:1000],
                                     selection.method = "moransi")
 ```
-可以画图检查marker基因表达情况
-`FindSpatiallyVariableFeatures`：寻找位置特异的高变基因；
-`FindVariableFeatures`：单细胞常用的寻找高变基因在SCTransform中就已经完成。
-可以保存RDS，下次分析时可以快速调用。
+可以画图检查marker基因表达情况<br>
+`FindSpatiallyVariableFeatures`：寻找位置特异的高变基因；<br>
+`FindVariableFeatures`：单细胞常用的寻找高变基因在SCTransform中就已经完成。<br>
+可以保存RDS，下次分析时可以快速调用。<br>
 
 <h4>4. 合并数据</h4>
 
