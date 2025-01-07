@@ -10,7 +10,11 @@
     6. Working with multiple slices处理多个切片; etc. <br>
 <br>
 
-以[Zhi et al., 2024](https://onlinelibrary.wiley.com/doi/10.1002/advs.202306515)的数据为例，开展空间转录组分析：
+以[Zhi et al., 2024](https://onlinelibrary.wiley.com/doi/10.1002/advs.202306515
+        
+        
+        
+        )的数据为例，开展空间转录组分析：
 
 <h4>1. 数据输入，构建Seurat对象</h4>
 
@@ -34,7 +38,7 @@ Error in png::readPNG(source = file.path(image.dir, image.name)) :
 ```
 解决策略1：检查GSM6833484_spatial文件夹，发现确实没有tissue_lowres_image.png这站图片，但是有tissue_hires_image.png这张图片，说明作者只上传了高分辨率图片；Read10X_Image默认读取低分辨率图像。因此，可以在Read10X_Image中指定图像路径，添加`image.name = "tissue_hires_image.png"`，问题解决。
 
-出现错误2：`SpatialFeaturePlot`后图像移位
+出现错误2：`SpatialFeaturePlot`后图像移位<br>
 解决策略2.1：Read10X_Image默认读取低分辨率图像，虽然通过`image.name = "tissue_hires_image.png"`强行读取了高分辨率图像，但是图像处理参数仍旧使用低分辨率图像来进行，因此会出现图片只显示了一部分的情况。因此，需要修改原始切片分辨率信息文件`scalefactors_json.json`，将tissue_lowres_scalef的值手动覆盖为tissue_hires_scalef，问题解决。
 解决策略2.2：修改参数`image. scale = lowres`或也能解决该问题。
 
