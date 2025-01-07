@@ -39,7 +39,7 @@ Error in png::readPNG(source = file.path(image.dir, image.name)) :
 解决策略1：检查GSM6833484_spatial文件夹，发现确实没有tissue_lowres_image.png这站图片，但是有tissue_hires_image.png这张图片，说明作者只上传了高分辨率图片；Read10X_Image默认读取低分辨率图像。因此，可以在Read10X_Image中指定图像路径，添加`image.name = "tissue_hires_image.png"`，问题解决。
 
 出现错误2：`SpatialFeaturePlot`后图像移位<br>
-解决策略2.1：Read10X_Image默认读取低分辨率图像，虽然通过`image.name = "tissue_hires_image.png"`强行读取了高分辨率图像，但是图像处理参数仍旧使用低分辨率图像来进行，因此会出现图片只显示了一部分的情况。因此，需要修改原始切片分辨率信息文件`scalefactors_json.json`，将tissue_lowres_scalef的值手动覆盖为tissue_hires_scalef，问题解决。
+解决策略2.1：Read10X_Image默认读取低分辨率图像，虽然通过`image.name = "tissue_hires_image.png"`强行读取了高分辨率图像，但是图像处理参数仍旧使用低分辨率图像来进行，因此会出现图片只显示了一部分的情况。因此，需要修改原始切片分辨率信息文件`scalefactors_json.json`，将tissue_lowres_scalef的值手动覆盖为tissue_hires_scalef，问题解决。<br>
 解决策略2.2：修改参数`image. scale = lowres`或也能解决该问题。
 
 > 怎么理解Seurat对象：[为什么要以数据库的思维来理解单细胞数据](https://www.jianshu.com/p/13142bf51e81)、[认识Seurat对象数据结构/数据格式及操作](https://www.jianshu.com/p/0c4bc6a932b2)
@@ -63,11 +63,11 @@ Error in `FetchData()`:
 Run `rlang::last_trace()` to see where the error occurred.
 ```
 解决策略1：
-1. 首先明确`Default search for "data" layer in "Spatial" assay yielded no results; utilizing "counts" layer instead`并不是错误源头，包在发现没有data layer之后已经自动使用counts layer替代。
+1. 首先明确`Default search for "data" layer in "Spatial" assay yielded no results; utilizing "counts" layer instead`并不是错误源头，包在发现没有data layer之后已经自动使用counts layer替代。<br>
 2. 出错原因在于没有理解Seurat对象的结构，生搬scRNA-seq的结果。在ST中，assay中的层叫`nFeature_Spatial`、`nCount_Spatial`，而不是`nFeature_RNA`、`nCount_RNA`，因此直接修改画图时指定的对象名称即可，错误解决。
 ![](assets/fig-2024-12-28-18-41.png)
 
-出现错误2：`pattern = "^mt-"`匹配不到线粒体基因
+出现错误2：`pattern = "^mt-"`匹配不到线粒体基因<br>
 解决策略2：检查基因名，发现线粒体基因的MT大写，修改为`pattern = "^MT-"`，错误解决。
 
 
